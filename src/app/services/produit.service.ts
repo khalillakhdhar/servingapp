@@ -22,5 +22,8 @@ export class ProduitService {
     this.produits.splice(index, 1);
     // supression de la fin (pop)
   }
-
+getAll()
+{
+  return this.produits;
+}
 }
