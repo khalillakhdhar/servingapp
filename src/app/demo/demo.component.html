@@ -1,0 +1,47 @@
+<div class="container text-center">
+  <div class="row">
+    <div class="col">
+
+    </div>
+    <div class="col">
+      <form #product="ngForm">
+        <div class="mb-3">
+          <label class="form-label">Titre:</label>
+          <input class="form-control" #titre="ngModel" placeholder="titre" required name="titre" [(ngModel)]="prod.titre">
+          <br>
+          <div *ngIf="titre.invalid && titre.touched" class="alert alert-danger">
+            <small *ngIf="titre?.errors?.['required']"> le titre est obligatoire</small>
+          </div>
+        </div>
+        <div class="mb3">
+          <label class="form-label">Prix:</label>
+          <input class="form-control" placeholder="prix" #prix="ngModel" name="prix" min="1" required type="number" [(ngModel)]="prod.prix">
+          <br>
+          <div class="alert alert-danger" *ngIf="prix.invalid && prix.touched">
+            <small *ngIf="prix?.errors?.['required']">le prix est obligatoire</small>
+            <small *ngIf="prix?.errors?.['min']">le prix doit être >=1 </small>
+          </div>
+        </div>
+        <div class="mb3">
+          <label class="form-label">Description:</label>
+          <textarea name="description" class="form-control" #des="ngModel" placeholder="description" required minlength="6"  [(ngModel)]="prod.description">
+
+            </textarea>
+            <br>
+            <div class="alert alert-danger" *ngIf="des.invalid && des.touched">
+              <small *ngIf="des?.errors?.['required']">la descritpion est obligatoire</small>
+              <small *ngIf="des?.errors?.['minlength']">la description doit être de longueur minimale 6 caractéres </small>
+            </div>
+            </div>
+            <div class="mb-3 text-center">
+              <button [disabled]="product.invalid" class="btn btn-primary">Ajouter</button>
+
+            </div>
+
+      </form>
+    </div>
+    <div class="col">
+
+    </div>
+  </div>
+</div>
